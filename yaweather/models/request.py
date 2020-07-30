@@ -2,7 +2,7 @@ from typing import Optional
 
 from pydantic import PositiveInt
 
-from ..models.base import Base, Lang
+from .base import Base, Lang
 
 
 class Request(Base):
