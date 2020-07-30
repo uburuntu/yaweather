@@ -1,6 +1,6 @@
 from typing import Optional
 
-from ..models.base import Base, Condition, DayTime, PhenomCondition, PrecipitationType, Season, WindDir
+from yaweather.models.base import Base, Condition, DayTime, PhenomCondition, PrecipitationType, Season, WindDir
 
 
 class Fact(Base):

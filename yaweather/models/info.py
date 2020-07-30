@@ -1,4 +1,4 @@
-from ..models.base import Base
+from yaweather.models.base import Base
 
 
 class TzInfo(Base):

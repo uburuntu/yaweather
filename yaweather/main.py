@@ -4,9 +4,9 @@ from typing import Tuple
 import aiohttp
 import requests
 
-from .models.base import Lang
-from .models.request import Request, RequestForecast
-from .models.response import ResponseForecast
+from yaweather.models.base import Lang
+from yaweather.models.request import Request, RequestForecast
+from yaweather.models.response import ResponseForecast
 
 
 class YaWeatherAPIError(Exception):
