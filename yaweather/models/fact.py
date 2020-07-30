@@ -1,6 +1,6 @@
 from typing import Optional
 
-from ..models.base import Base, Condition, DayTime, PhenomCondition, PrecipitationType, Season, WindDir
+from .base import Base, Condition, DayTime, PhenomCondition, PrecipitationType, Season, WindDir
 
 
 class Fact(Base):

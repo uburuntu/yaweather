@@ -38,7 +38,7 @@ setuptools.setup(
     long_description_content_type='text/markdown',
     url='https://github.com/uburuntu/{}'.format(module_name),
     download_url='https://github.com/uburuntu/{}/archive/master.zip'.format(module_name),
-    packages=[module_name],
+    packages=setuptools.find_packages(exclude=['examples', 'tests']),
     requires_python='>=3.6',
     install_requires=load_requirements('requirements.txt'),
     extras_require={'dev': load_requirements('requirements-dev.txt')},

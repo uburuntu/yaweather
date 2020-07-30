@@ -4,9 +4,7 @@ from typing import Tuple
 import aiohttp
 import requests
 
-from .models.base import Lang
-from .models.request import Request, RequestForecast
-from .models.response import ResponseForecast
+from .models import Lang, Request, RequestForecast, ResponseForecast
 
 
 class YaWeatherAPIError(Exception):

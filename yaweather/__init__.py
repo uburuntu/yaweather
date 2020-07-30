@@ -18,17 +18,14 @@ from .cities import Afghanistan, Albania, Algeria, AmericanSamoa, Andorra, Angol
     Togo, Tonga, TrinidadAndTobago, Tunisia, Turkey, Turkmenistan, Tuvalu, Uganda, Ukraine, UnitedArabEmirates, UnitedKingdom, UnitedStates, \
     Uruguay, Uzbekistan, Vanuatu, Venezuela, Vietnam, WestBank, Yemen, Zambia, Zimbabwe
 from .main import YaWeather, YaWeatherAPIError, YaWeatherAsync, YaWeatherBase
-from .models.base import Base, Condition, DayTime, Lang, MoonCode, MoonText, PhenomCondition, PrecipitationType, Season, WindDir
-from .models.fact import Fact
-from .models.info import Info, TzInfo
-from .models.request import Request, RequestForecast
-from .models.response import Response, ResponseForecast
+from .models import Base, Condition, DayTime, Fact, Info, Lang, MoonCode, MoonText, PhenomCondition, PrecipitationType, Request, \
+    RequestForecast, Response, ResponseForecast, Season, TzInfo, WindDir
 
 __author__ = 'uburuntu'
 __email__ = 'github@rmbk.me'
 
 __license__ = 'MIT'
-__version__ = '1.1.0'
+__version__ = '1.1.5'
 
 __all__ = (
     'Base',

@@ -1,10 +1,10 @@
 import datetime
 from typing import List
 
-from ..models.base import Base
-from ..models.fact import Fact
-from ..models.forecast import Forecast
-from ..models.info import Info
+from .base import Base
+from .fact import Fact
+from .forecast import Forecast
+from .info import Info
 
 
 class Response(Base):
