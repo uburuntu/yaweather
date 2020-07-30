@@ -1,7 +1,7 @@
 import datetime
 from typing import List, Optional
 
-from ..models.base import Base, Condition, DayTime, MoonCode, MoonText, PrecipitationType, WindDir
+from yaweather.models.base import Base, Condition, DayTime, MoonCode, MoonText, PrecipitationType, WindDir
 
 
 class ForecastParts(Base):

@@ -1,10 +1,10 @@
 import datetime
 from typing import List
 
-from ..models.base import Base
-from ..models.fact import Fact
-from ..models.forecast import Forecast
-from ..models.info import Info
+from yaweather.models.base import Base
+from yaweather.models.fact import Fact
+from yaweather.models.forecast import Forecast
+from yaweather.models.info import Info
 
 
 class Response(Base):

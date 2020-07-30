@@ -1,6 +1,6 @@
 """Yandex Weather API with asyncio support and typings"""
 
-from . import cities
+from . import cities, models
 from .cities import Afghanistan, Albania, Algeria, AmericanSamoa, Andorra, Angola, AntiguaAndBarbuda, Argentina, Armenia, Aruba, Australia, \
     Austria, Azerbaijan, Bahamas, Bahrain, Bangladesh, Barbados, Belarus, Belgium, Belize, Benin, Bhutan, Bolivia, BosniaAndHerzegovina, \
     Botswana, Brazil, Brunei, Bulgaria, BurkinaFaso, Burma, Burundi, CaboVerde, Cambodia, Cameroon, Canada, CentralAfricanRepublic, Chad, \
@@ -28,7 +28,7 @@ __author__ = 'uburuntu'
 __email__ = 'github@rmbk.me'
 
 __license__ = 'MIT'
-__version__ = '1.1.0'
+__version__ = '1.1.3'
 
 __all__ = (
     'Base',
@@ -53,6 +53,7 @@ __all__ = (
     'YaWeatherBase',
     'YaWeatherAPIError',
     'cities',
+    'models',
 
     # Countries
     'Afghanistan',
