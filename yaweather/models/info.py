@@ -1,3 +1,5 @@
+from typing import Optional
+
 from .base import Base
 
 
@@ -7,9 +9,9 @@ class TzInfo(Base):
     # Name of the time zone
     name: str
     # Abbreviated name of the time zone
-    abbr: str
+    abbr: Optional[str]
     # Daylight saving time
-    dst: bool
+    dst: Optional[bool]
 
 
 class Info(Base):
