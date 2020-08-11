@@ -12,6 +12,8 @@ Docs: https://tech.yandex.com/weather/doc/dg/concepts/forecast-test-docpage ([RU
 
 Get API Key: https://developer.tech.yandex.ru/services/18
 
+![](https://i.imgur.com/pMf2tpT.png)
+
 {toc}
 
 ---

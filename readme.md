@@ -12,6 +12,8 @@ Docs: https://tech.yandex.com/weather/doc/dg/concepts/forecast-test-docpage ([RU
 
 Get API Key: https://developer.tech.yandex.ru/services/18
 
+![](https://i.imgur.com/pMf2tpT.png)
+
 ## 📝 Table of Contents
 
 - [🎒 Installation](#-installation)
@@ -47,7 +49,7 @@ from yaweather import UnitedKingdom, YaWeather
 y = YaWeather(api_key='secret')
 res = y.forecast(UnitedKingdom.London)
 
-print(f'Now: {res.fact.temp} В°C, feels like {res.fact.feels_like} В°C')
+print(f'Now: {res.fact.temp} °C, feels like {res.fact.feels_like} °C')
 print(f'Condition: {res.fact.condition}')
 
 ```
@@ -69,7 +71,7 @@ async def main():
     async with YaWeatherAsync(api_key='secret') as y:
         res = await y.forecast(Russia.Moscow)
 
-        print(f'Now: {res.fact.temp} В°C, feels like {res.fact.feels_like} В°C')
+        print(f'Now: {res.fact.temp} °C, feels like {res.fact.feels_like} °C')
         print(f'Condition: {res.fact.condition}')
 
 
@@ -93,7 +95,7 @@ res = y.forecast(UnitedStates.NewYork)
 
 for f in res.forecasts:
     day = f.parts.day_short
-    print(f'{f.date} | {day.temp} В°C, {day.condition}')
+    print(f'{f.date} | {day.temp} °C, {day.condition}')
 
 ```
 Output:
@@ -121,7 +123,7 @@ async def main():
 
         for f in res.forecasts:
             day = f.parts.day_short
-            print(f'{f.date} | {day.temp} В°C, {day.condition}')
+            print(f'{f.date} | {day.temp} °C, {day.condition}')
 
 
 asyncio.run(main())

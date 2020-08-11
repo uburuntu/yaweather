@@ -30,7 +30,7 @@ def toc(text: str, level='##', skip_first=True) -> str:
 if __name__ == '__main__':
     # Get template and sources of scripts
     template = Path('../readme.template.md').read_text(encoding='utf-8')
-    scripts = {p.stem: p.read_text() for p in Path('../examples').iterdir()}
+    scripts = {p.stem: p.read_text(encoding='utf-8') for p in Path('../examples').iterdir()}
 
     # Substitute
     result = template.format(toc=toc(template), **scripts)
