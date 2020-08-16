@@ -27,3 +27,12 @@ class RequestForecast(Request):
     hours: Optional[bool]
     # Extra information about precipitation
     extra: Optional[bool]
+
+
+class RequestInformers(Request):
+    # The latitude in degrees
+    lat: float
+    # The longitude in degrees
+    lon: float
+    # The combination of language and country that weather information will be returned for
+    lang: Optional[Lang]

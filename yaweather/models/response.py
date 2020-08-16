@@ -17,3 +17,11 @@ class ResponseForecast(Response):
     info: Info
     fact: Fact
     forecasts: List[Forecast]
+
+
+class ResponseInformers(Response):
+    now: int
+    now_dt: datetime.datetime
+    info: Info
+    fact: Fact
+    forecast: Forecast

@@ -4,7 +4,7 @@ from typing import Tuple
 import aiohttp
 import requests
 
-from .models import Lang, Request, RequestForecast, ResponseForecast
+from yaweather.models import Lang, Request, RequestForecast, RequestInformers, ResponseForecast, ResponseInformers
 
 
 class YaWeatherAPIError(Exception):
@@ -13,8 +13,12 @@ class YaWeatherAPIError(Exception):
 
 class YaWeatherBase:
     """
-    Docs: https://tech.yandex.com/weather/doc/dg/concepts/forecast-test-docpage/
-    Docs RU: https://yandex.ru/dev/weather/doc/dg/concepts/forecast-test-docpage/
+    Docs:
+        - https://tech.yandex.com/weather/doc/dg/concepts/forecast-test-docpage/
+        - https://tech.yandex.com/weather/doc/dg/concepts/forecast-info-docpage/
+    Docs RU:
+        - https://yandex.ru/dev/weather/doc/dg/concepts/forecast-test-docpage/
+        - https://yandex.ru/dev/weather/doc/dg/concepts/forecast-info-docpage/
     """
     api_url = 'https://api.weather.yandex.ru/v2/'
 
@@ -60,7 +64,7 @@ class YaWeather(YaWeatherBase):
     def __enter__(self):
         return self
 
-    def __aexit__(self, exc_type, exc_val, exc_tb):
+    def __exit__(self, exc_type, exc_val, exc_tb):
         return self.close()
 
     def _request(self, endpoint: str, request: Request) -> bytes:
@@ -92,7 +96,7 @@ class YaWeather(YaWeatherBase):
         """
         Request forecast and return API response as raw dict
 
-        :param coordinates: Tuple of two floats: longitude and latitude
+        :param coordinates: Tuple of two floats: latitude and longitude 
         :param lang: The combination of language and country that weather information will be returned for
         :param limit: The number of days in the forecast, including the current day
         :param hours: For each day, the response will contain the hourly weather forecast
@@ -109,7 +113,7 @@ class YaWeather(YaWeatherBase):
         """
         Request forecast and return API response as instance of ResponseForecast
 
-        :param coordinates: Tuple of two floats: longitude and latitude
+        :param coordinates: Tuple of two floats: latitude and longitude 
         :param lang: The combination of language and country that weather information will be returned for
         :param limit: The number of days in the forecast, including the current day
         :param hours: For each day, the response will contain the hourly weather forecast
@@ -118,6 +122,37 @@ class YaWeather(YaWeatherBase):
         """
         result = self._forecast(coordinates, lang, limit, hours, extra)
         return ResponseForecast.parse_raw(result)
+
+    def _informers(self, coordinates: Tuple[float, float], lang: Lang = None) -> bytes:
+        request = RequestInformers(
+            lat=coordinates[0],
+            lon=coordinates[1],
+            lang=self.lang if lang is None else lang
+        )
+        result = self._request('informers', request)
+        return result
+
+    def informers_raw(self, coordinates: Tuple[float, float], lang: Lang = None) -> dict:
+        """
+        Request forecast and return API response as raw dict
+
+        :param coordinates: Tuple of two floats: latitude and longitude 
+        :param lang: The combination of language and country that weather information will be returned for
+        :return: dict
+        """
+        result = self._informers(coordinates, lang)
+        return json.loads(result)
+
+    def informers(self, coordinates: Tuple[float, float], lang: Lang = None) -> ResponseInformers:
+        """
+        Request forecast and return API response as instance of ResponseInformers
+
+        :param coordinates: Tuple of two floats: latitude and longitude 
+        :param lang: The combination of language and country that weather information will be returned for
+        :return: ResponseInformers
+        """
+        result = self._informers(coordinates, lang)
+        return ResponseInformers.parse_raw(result)
 
 
 class YaWeatherAsync(YaWeatherBase):
@@ -171,7 +206,7 @@ class YaWeatherAsync(YaWeatherBase):
         """
         Request forecast and return API response as raw dict
 
-        :param coordinates: Tuple of two floats: longitude and latitude
+        :param coordinates: Tuple of two floats: latitude and longitude 
         :param lang: The combination of language and country that weather information will be returned for
         :param limit: The number of days in the forecast, including the current day
         :param hours: For each day, the response will contain the hourly weather forecast
@@ -188,7 +223,7 @@ class YaWeatherAsync(YaWeatherBase):
         """
         Request forecast and return API response as instance of ResponseForecast
 
-        :param coordinates: Tuple of two floats: longitude and latitude
+        :param coordinates: Tuple of two floats: latitude and longitude 
         :param lang: The combination of language and country that weather information will be returned for
         :param limit: The number of days in the forecast, including the current day
         :param hours: For each day, the response will contain the hourly weather forecast
@@ -197,3 +232,34 @@ class YaWeatherAsync(YaWeatherBase):
         """
         result = await self._forecast(coordinates, lang, limit, hours, extra)
         return ResponseForecast.parse_raw(result)
+
+    async def _informers(self, coordinates: Tuple[float, float], lang: Lang = None) -> bytes:
+        request = RequestInformers(
+            lat=coordinates[0],
+            lon=coordinates[1],
+            lang=self.lang if lang is None else lang
+        )
+        result = await self._request('informers', request)
+        return result
+
+    async def informers_raw(self, coordinates: Tuple[float, float], lang: Lang = None) -> dict:
+        """
+        Request forecast and return API response as raw dict
+
+        :param coordinates: Tuple of two floats: latitude and longitude
+        :param lang: The combination of language and country that weather information will be returned for
+        :return: dict
+        """
+        result = await self._informers(coordinates, lang)
+        return json.loads(result)
+
+    async def informers(self, coordinates: Tuple[float, float], lang: Lang = None) -> ResponseInformers:
+        """
+        Request forecast and return API response as instance of ResponseInformers
+
+        :param coordinates: Tuple of two floats: latitude and longitude
+        :param lang: The combination of language and country that weather information will be returned for
+        :return: ResponseInformers
+        """
+        result = await self._informers(coordinates, lang)
+        return ResponseInformers.parse_raw(result)

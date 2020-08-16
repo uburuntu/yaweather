@@ -1,6 +1,7 @@
 """Yandex Weather API with asyncio support and typings"""
 
 from . import cities
+from .api import YaWeather, YaWeatherAPIError, YaWeatherAsync, YaWeatherBase
 from .cities import Afghanistan, Albania, Algeria, AmericanSamoa, Andorra, Angola, AntiguaAndBarbuda, Argentina, Armenia, Aruba, Australia, \
     Austria, Azerbaijan, Bahamas, Bahrain, Bangladesh, Barbados, Belarus, Belgium, Belize, Benin, Bhutan, Bolivia, BosniaAndHerzegovina, \
     Botswana, Brazil, Brunei, Bulgaria, BurkinaFaso, Burma, Burundi, CaboVerde, Cambodia, Cameroon, Canada, CentralAfricanRepublic, Chad, \
@@ -17,7 +18,6 @@ from .cities import Afghanistan, Albania, Algeria, AmericanSamoa, Andorra, Angol
     SouthSudan, Spain, SriLanka, Sudan, Suriname, Swaziland, Sweden, Switzerland, Syria, Taiwan, Tajikistan, Tanzania, Thailand, TimorLeste, \
     Togo, Tonga, TrinidadAndTobago, Tunisia, Turkey, Turkmenistan, Tuvalu, Uganda, Ukraine, UnitedArabEmirates, UnitedKingdom, UnitedStates, \
     Uruguay, Uzbekistan, Vanuatu, Venezuela, Vietnam, WestBank, Yemen, Zambia, Zimbabwe
-from .api import YaWeather, YaWeatherAPIError, YaWeatherAsync, YaWeatherBase
 from .models import Base, Condition, DayTime, Fact, Info, Lang, MoonCode, MoonText, PhenomCondition, PrecipitationType, Request, \
     RequestForecast, Response, ResponseForecast, Season, TzInfo, WindDir
 
@@ -25,7 +25,7 @@ __author__ = 'uburuntu'
 __email__ = 'github@rmbk.me'
 
 __license__ = 'MIT'
-__version__ = '1.1.7'
+__version__ = '1.2.0'
 
 __all__ = (
     'Base',

@@ -12,6 +12,11 @@ class Fact(Base):
     temp_water: Optional[float]
     # The code of the weather icon.
     icon: str
+
+    @property
+    def icon_url(self) -> Optional[str]:
+        return self.icon and f'https://yastatic.net/weather/i/icons/blueye/color/svg/{self.icon}.svg'
+
     # The code for the weather description
     condition: Condition
     # Wind speed (meters per second)
@@ -56,13 +61,10 @@ class Fact(Base):
     cloudness: Optional[float]
     # The code for an additional weather event icon
     phenom_icon: Optional[str]
-    # The code for an additional weather description
-    phenom_condition: Optional[PhenomCondition]
-
-    @property
-    def icon_url(self) -> Optional[str]:
-        return self.icon and f'https://yastatic.net/weather/i/icons/blueye/color/svg/{self.icon}.svg'
 
     @property
     def phenom_icon_url(self) -> Optional[str]:
         return self.phenom_icon and f'https://yastatic.net/weather/i/icons/blueye/color/svg/{self.phenom_icon}.svg'
+
+    # The code for an additional weather description
+    phenom_condition: Optional[PhenomCondition]

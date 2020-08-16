@@ -1,6 +1,8 @@
 import datetime
 from typing import List, Optional
 
+from pydantic import validator
+
 from .base import Base, Condition, DayTime, MoonCode, MoonText, PrecipitationType, WindDir
 
 
@@ -46,6 +48,14 @@ class Forecast(Base):
     # All 12-hour forecasts have the same set of fields
     # Note: For the last day returned in the forecast, some of the parts might be missing
     parts: Optional[ForecastParts]
+
+    @validator('parts', pre=True)
+    def parse_parts(cls, v):
+        # Note: sometimes arrives as list
+        if isinstance(v, list):
+            v = {part['part_name']: part for part in v}
+        return v
+
     # Object with the weather forecast for the night
     # The beginning of the nighttime period corresponds to the beginning of the 24-hour period
     # To specify the upcoming night temperatures, use the object for the nighttime forecast for the next day
@@ -60,6 +70,11 @@ class Forecast(Base):
     feels_like: Optional[float]
     # The code of the weather icon
     icon: Optional[str]
+
+    @property
+    def icon_url(self) -> Optional[str]:
+        return self.icon and f'https://yastatic.net/weather/i/icons/blueye/color/svg/{self.icon}.svg'
+
     # The code for the weather description
     condition: Optional[Condition]
     # Light or dark time of the day
@@ -106,17 +121,12 @@ class Forecast(Base):
     temp: Optional[float]
     # Object for the hourly forecast
     # Consists of 24 parts (hours) for the first 2-3 days, then an empty string is returned
-    # Each part contains the following fields:
-    #    hour hour_ts temp feels_like icon condition wind_speed wind_gust wind_dir pressure_mm pressure_pa humidity prec_mm prec_period prec_type prec_strength is_thunder cloudness
-    hours: Optional[List[dict]]
+    hours: Optional[List['Forecast']]
     # The hour the forecast is for (0-23) using the local time
     hour: Optional[str]
     # The time of the forecast in Unix time
     hour_ts: Optional[float]
 
-    @property
-    def icon_url(self) -> Optional[str]:
-        return self.icon and f'https://yastatic.net/weather/i/icons/blueye/color/svg/{self.icon}.svg'
 
-
+Forecast.update_forward_refs()
 ForecastParts.update_forward_refs()

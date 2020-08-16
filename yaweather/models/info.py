@@ -20,10 +20,10 @@ class Info(Base):
     # The longitude (in degrees)
     lon: float
     # Information about the time zone
-    tzinfo: TzInfo
+    tzinfo: Optional[TzInfo]
     # The normal pressure for the given coordinates (mm Hg)
-    def_pressure_mm: int
+    def_pressure_mm: Optional[int]
     # The normal pressure for the given coordinates (hPa)
-    def_pressure_pa: int
+    def_pressure_pa: Optional[int]
     # Locality page on Yandex.Weather (https://yandex.ru/pogoda/)
     url: str
