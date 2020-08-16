@@ -17,7 +17,7 @@ from .cities import Afghanistan, Albania, Algeria, AmericanSamoa, Andorra, Angol
     SouthSudan, Spain, SriLanka, Sudan, Suriname, Swaziland, Sweden, Switzerland, Syria, Taiwan, Tajikistan, Tanzania, Thailand, TimorLeste, \
     Togo, Tonga, TrinidadAndTobago, Tunisia, Turkey, Turkmenistan, Tuvalu, Uganda, Ukraine, UnitedArabEmirates, UnitedKingdom, UnitedStates, \
     Uruguay, Uzbekistan, Vanuatu, Venezuela, Vietnam, WestBank, Yemen, Zambia, Zimbabwe
-from .main import YaWeather, YaWeatherAPIError, YaWeatherAsync, YaWeatherBase
+from .api import YaWeather, YaWeatherAPIError, YaWeatherAsync, YaWeatherBase
 from .models import Base, Condition, DayTime, Fact, Info, Lang, MoonCode, MoonText, PhenomCondition, PrecipitationType, Request, \
     RequestForecast, Response, ResponseForecast, Season, TzInfo, WindDir
 
