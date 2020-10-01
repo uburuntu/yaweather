@@ -36,8 +36,8 @@ class Forecast(Base):
     moon_code: Optional[MoonCode]
     # Text code for the lunar phase.
     moon_text: Optional[MoonText]
-    # Forecasts by time of day and 12-hour forecasts. 
-    # Contains fields that differ by type of forecast:  
+    # Forecasts by time of day and 12-hour forecasts.
+    # Contains fields that differ by type of forecast:
     #     Nighttime forecast
     #     Morning forecast
     #     Afternoon forecast
