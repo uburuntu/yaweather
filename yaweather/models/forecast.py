@@ -36,8 +36,8 @@ class Forecast(Base):
     moon_code: Optional[MoonCode]
     # Text code for the lunar phase.
     moon_text: Optional[MoonText]
-    # Forecasts by time of day and 12-hour forecasts. 
-    # Contains fields that differ by type of forecast:  
+    # Forecasts by time of day and 12-hour forecasts.
+    # Contains fields that differ by type of forecast:
     #     Nighttime forecast
     #     Morning forecast
     #     Afternoon forecast
@@ -46,7 +46,8 @@ class Forecast(Base):
     #     Nighttime forecast
     # All weather forecasts for a certain time of day have the same set of fields
     # All 12-hour forecasts have the same set of fields
-    # Note: For the last day returned in the forecast, some of the parts might be missing
+    # Note: For the last day returned in the forecast, some of the parts might
+    # be missing
     parts: Optional[ForecastParts]
 
     @validator('parts', pre=True)
@@ -58,7 +59,8 @@ class Forecast(Base):
 
     # Object with the weather forecast for the night
     # The beginning of the nighttime period corresponds to the beginning of the 24-hour period
-    # To specify the upcoming night temperatures, use the object for the nighttime forecast for the next day
+    # To specify the upcoming night temperatures, use the object for the
+    # nighttime forecast for the next day
     night: Optional[ForecastParts]
     # Minimum temperature for the time of day (°C)
     temp_min: Optional[float]
@@ -120,7 +122,8 @@ class Forecast(Base):
     # Highest daytime or lowest nighttime temperature (°C)
     temp: Optional[float]
     # Object for the hourly forecast
-    # Consists of 24 parts (hours) for the first 2-3 days, then an empty string is returned
+    # Consists of 24 parts (hours) for the first 2-3 days, then an empty
+    # string is returned
     hours: Optional[List['Forecast']]
     # The hour the forecast is for (0-23) using the local time
     hour: Optional[str]

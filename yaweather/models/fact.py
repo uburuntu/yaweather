@@ -8,7 +8,8 @@ class Fact(Base):
     temp: float
     # What the temperature feels like (°C)
     feels_like: float
-    # The water temperature (°C). This parameter is returned for localities where this information is relevant
+    # The water temperature (°C). This parameter is returned for localities
+    # where this information is relevant
     temp_water: Optional[float]
     # The code of the weather icon.
     icon: str
