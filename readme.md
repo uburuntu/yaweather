@@ -12,6 +12,15 @@ Docs: https://tech.yandex.com/weather/doc/dg/concepts/forecast-test-docpage ([RU
 
 Get API Key: https://developer.tech.yandex.ru/services/18
 
+⚠️ **Warning**: As a developer of this library, I recommend you not to use Yandex Weather API, here are some reasons:
+- Incomplete responses even for metropolises — you can [have a look](yaweather/models/forecast.py) to all `Optional` fields that I had to use in models, that means you should add `None` checks before access literally to any attribute  
+- Bad official documentation — for example, I [really had to](scripts/build_models.py) parse html code of doc pages just because tables copying was broken
+- Incomprehensible and big delay answers from support team
+- Few requests available — 50 per day on free rate and 5000 per day for one test month
+- Closed information about real prices that are accessible only via support team
+
+Consider usage of [OpenWeatherMap](https://openweathermap.org/api) with 1 mln free requests every month and really [good documentation](https://openweathermap.org/api/one-call-api) which easy to understand and parse.
+
 ![](https://i.imgur.com/pMf2tpT.png)
 
 ## 📝 Table of Contents
