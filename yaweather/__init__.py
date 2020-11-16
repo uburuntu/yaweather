@@ -25,7 +25,7 @@ __author__ = 'uburuntu'
 __email__ = 'github@rmbk.me'
 
 __license__ = 'MIT'
-__version__ = '1.2.1'
+__version__ = '1.2.2'
 
 __all__ = (
     'Base',
