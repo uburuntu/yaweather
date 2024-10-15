@@ -94,7 +94,7 @@ class Forecast(Base):
     # Humidity (percent)
     humidity: Optional[float] = None
     # Predicted amount of precipitation (mm)
-    prec_mm: Optional[int] = None
+    prec_mm: Optional[float] = None
     # Predicted duration of precipitation (minutes)
     prec_period: Optional[int] = None
     # Type of precipitation
