@@ -9,7 +9,7 @@ class Fact(Base):
     # What the temperature feels like (°C)
     feels_like: float
     # The water temperature (°C). This parameter is returned for localities where this information is relevant
-    temp_water: Optional[float]
+    temp_water: Optional[float] = None
     # The code of the weather icon.
     icon: str
 
@@ -40,9 +40,9 @@ class Fact(Base):
     # The time when weather data was measured, in Unix time
     obs_time: int
     # Indicates a thunderstorm
-    is_thunder: Optional[bool]
+    is_thunder: Optional[bool] = None
     # Type of precipitation
-    prec_type: Optional[PrecipitationType]
+    prec_type: Optional[PrecipitationType] = None
     # Intensity of precipitation
     # Possible values:
     #    0.00 — No precipitation
@@ -50,7 +50,7 @@ class Fact(Base):
     #    0.50 — Rain or snow
     #    0.75 — Heavy rain or snowfall
     #    1.00 — Heavy downpour or snowstorm
-    prec_strength: Optional[float]
+    prec_strength: Optional[float] = None
     # Cloud cover
     # Possible values:
     #    0.00 — Clear
@@ -58,13 +58,13 @@ class Fact(Base):
     #    0.50 — Cloudy
     #    0.75 — Cloudy
     #    1.00 — Overcast
-    cloudness: Optional[float]
+    cloudness: Optional[float] = None
     # The code for an additional weather event icon
-    phenom_icon: Optional[str]
+    phenom_icon: Optional[str] = None
 
     @property
     def phenom_icon_url(self) -> Optional[str]:
         return self.phenom_icon and f'https://yastatic.net/weather/i/icons/blueye/color/svg/{self.phenom_icon}.svg'
 
     # The code for an additional weather description
-    phenom_condition: Optional[PhenomCondition]
+    phenom_condition: Optional[PhenomCondition] = None

@@ -20,13 +20,13 @@ class RequestForecast(Request):
     # The longitude in degrees
     lon: float
     # The combination of language and country that weather information will be returned for
-    lang: Optional[Lang]
+    lang: Optional[Lang] = None
     # The number of days in the forecast, including the current day
-    limit: Optional[PositiveInt]
+    limit: Optional[PositiveInt] = None
     # For each day, the response will contain the hourly weather forecast
-    hours: Optional[bool]
+    hours: Optional[bool] = None
     # Extra information about precipitation
-    extra: Optional[bool]
+    extra: Optional[bool] = None
 
 
 class RequestInformers(Request):
@@ -35,4 +35,4 @@ class RequestInformers(Request):
     # The longitude in degrees
     lon: float
     # The combination of language and country that weather information will be returned for
-    lang: Optional[Lang]
+    lang: Optional[Lang] = None

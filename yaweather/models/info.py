@@ -9,9 +9,9 @@ class TzInfo(Base):
     # Name of the time zone
     name: str
     # Abbreviated name of the time zone
-    abbr: Optional[str]
+    abbr: Optional[str] = None
     # Daylight saving time
-    dst: Optional[bool]
+    dst: Optional[bool] = None
 
 
 class Info(Base):
@@ -20,10 +20,10 @@ class Info(Base):
     # The longitude (in degrees)
     lon: float
     # Information about the time zone
-    tzinfo: Optional[TzInfo]
+    tzinfo: Optional[TzInfo] = None
     # The normal pressure for the given coordinates (mm Hg)
-    def_pressure_mm: Optional[int]
+    def_pressure_mm: Optional[int] = None
     # The normal pressure for the given coordinates (hPa)
-    def_pressure_pa: Optional[int]
+    def_pressure_pa: Optional[int] = None
     # Locality page on Yandex.Weather (https://yandex.ru/pogoda/)
     url: str
