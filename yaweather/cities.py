@@ -554,6 +554,7 @@ class Russia(CountryBase):
     Makhachkala = (42.98, 47.5)
     Orenburg = (51.78, 55.11)
     Novokuznetsk = (53.75, 87.115)
+    Ivanovo = (56.999799, 40.973014)
 
 
 class Turkey(CountryBase):
