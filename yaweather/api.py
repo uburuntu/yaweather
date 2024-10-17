@@ -121,7 +121,7 @@ class YaWeather(YaWeatherBase):
         :return: ResponseForecast
         """
         result = self._forecast(coordinates, lang, limit, hours, extra)
-        return ResponseForecast.parse_raw(result)
+        return ResponseForecast.model_validate_json(result)
 
     def _informers(self, coordinates: Tuple[float, float], lang: Lang = None) -> bytes:
         request = RequestInformers(
@@ -152,7 +152,7 @@ class YaWeather(YaWeatherBase):
         :return: ResponseInformers
         """
         result = self._informers(coordinates, lang)
-        return ResponseInformers.parse_raw(result)
+        return ResponseInformers.model_validate_json(result)
 
 
 class YaWeatherAsync(YaWeatherBase):
@@ -231,7 +231,7 @@ class YaWeatherAsync(YaWeatherBase):
         :return: ResponseForecast
         """
         result = await self._forecast(coordinates, lang, limit, hours, extra)
-        return ResponseForecast.parse_raw(result)
+        return ResponseForecast.model_validate_json(result)
 
     async def _informers(self, coordinates: Tuple[float, float], lang: Lang = None) -> bytes:
         request = RequestInformers(
@@ -262,4 +262,4 @@ class YaWeatherAsync(YaWeatherBase):
         :return: ResponseInformers
         """
         result = await self._informers(coordinates, lang)
-        return ResponseInformers.parse_raw(result)
+        return ResponseInformers.model_validate_json(result)
