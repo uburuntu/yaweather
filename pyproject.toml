@@ -1,0 +1,64 @@
+[build-system]
+requires = [
+    "setuptools>=61.2",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "yaweather"
+version = "1.2.2"
+authors = [
+    { name = "uburuntu", email = "github@rmbk.me" },
+]
+description = "Yandex Weather API with asyncio support and typings"
+keywords = [
+    "yandex",
+    "ya",
+    "weather",
+    "api",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Framework :: AsyncIO",
+    "Intended Audience :: Developers",
+    "Intended Audience :: System Administrators",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Typing :: Typed",
+]
+dependencies = [
+    "aiohttp>=3.6",
+    "pydantic>=2.5",
+    "requests>=2.24",
+]
+
+[project.license]
+text = "MIT"
+
+[project.readme]
+file = "readme.md"
+content-type = "text/markdown"
+
+[project.urls]
+Homepage = "https://github.com/uburuntu/yaweather"
+Download = "https://github.com/uburuntu/yaweather/archive/master.zip"
+
+[project.optional-dependencies]
+dev = [
+    "codecov>=2.0",
+    "pytest>=5.4",
+    "pytest-asyncio>=0.12",
+    "pytest-cov>=2.8",
+]
+
+[tool.setuptools]
+platforms = [
+    "all",
+]
+include-package-data = false
+
+[tool.setuptools.packages.find]
+exclude = [
+    "examples", "tests",
+]
+namespaces = false
