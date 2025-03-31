@@ -1,12 +1,10 @@
 from enum import Enum, IntEnum, auto
 
-from pydantic import BaseConfig, BaseModel, Extra
+from pydantic import BaseModel, ConfigDict
 
 
 class Base(BaseModel):
-    class Config(BaseConfig):
-        extra = Extra.allow
-        use_enum_values = True
+    model_config = ConfigDict(extra='allow', use_enum_values=True)
 
 
 class MoonCode(IntEnum):

@@ -21,4 +21,4 @@ class TestModels:
     @pytest.mark.parametrize('responses', load_responses())
     def test_response_parsing(self, responses):
         for response in responses:
-            ResponseForecast.parse_obj(response)
+            ResponseForecast.model_validate(response)

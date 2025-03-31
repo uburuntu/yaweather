@@ -1,7 +1,7 @@
 import datetime
 from typing import List, Optional
 
-from pydantic import validator
+from pydantic import field_validator
 
 from .base import Base, Condition, DayTime, MoonCode, MoonText, PrecipitationType, WindDir
 
@@ -49,7 +49,7 @@ class Forecast(Base):
     # Note: For the last day returned in the forecast, some of the parts might be missing
     parts: Optional[ForecastParts] = None
 
-    @validator('parts', pre=True)
+    @field_validator('parts', mode='before')
     def parse_parts(cls, v):
         # Note: sometimes arrives as list
         if isinstance(v, list):
@@ -128,5 +128,5 @@ class Forecast(Base):
     hour_ts: Optional[float] = None
 
 
-Forecast.update_forward_refs()
-ForecastParts.update_forward_refs()
+Forecast.model_rebuild()
+ForecastParts.model_rebuild()
